@@ -15,7 +15,7 @@ class DownloadParser:
         self.argparser.add_argument("url", help="网页链接")
         self.site_parser = {
             "www.xbsee.com": XbseeParser(),
-            "s.ciligod.com": CiligodParser()
+            "www.ciligod.com": CiligodParser()
         }
 
     def run(self):
@@ -23,7 +23,7 @@ class DownloadParser:
         netloc = urlparse(ns.url).netloc
         page_parser = self.site_parser.get(netloc)
         if page_parser is None:
-            raise Exception(f"没有[netloc]的解析器")
+            raise Exception(f"没有[{netloc}]的解析器")
         result = page_parser.parse(self.download(ns.url))
         result = self.filter_by_pattern(result, ns.pattern)
         result = "\n".join(result)
