@@ -5,6 +5,8 @@ from urllib.request import Request
 from urllib.parse import urlparse
 from xbsee_parser import XbseeParser
 from ciligod_parser import CiligodParser
+from hupo_parser import HupoParser
+from ygdy8_parser import Ygdy8Parser
 
 class DownloadParser:
 
@@ -15,7 +17,10 @@ class DownloadParser:
         self.argparser.add_argument("url", help="网页链接")
         self.site_parser = {
             "www.xbsee.com": XbseeParser(),
-            "www.ciligod.com": CiligodParser()
+            "www.ciligod.com": CiligodParser(),
+            "www.clgod.top": CiligodParser(),
+            "www.15po.com": HupoParser(),
+            "www.ygdy8.com": Ygdy8Parser(),
         }
 
     def run(self):
